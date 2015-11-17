@@ -1,0 +1,12 @@
+[SQL and OUTPUT]
+
+mysql> SELECT C.year, SUM(SG.number_of_release) AS NumberOfRelease FROM CalendarDimension C, SongDimension S, ArtistDimension R, PublisherDimension P, SongGenreFact SG WHERE C.calendar_key = SG.calendar_key AND S.song_key = SG.song_key AND R.artist_key = SG.artist_key AND P.publisher_key = SG.publisher_key AND R.number_of_members = 1 AND P.name = 'Big Machine Records' AND S.genre = 'Pop' AND C.year BETWEEN 2005 AND 2015 GROUP BY C.year;
++------+-----------------+
+| year | NumberOfRelease |
++------+-----------------+
+| 2014 |               1 |
++------+-----------------+
+1 row in set (0.00 sec)
+
+
+mysql> 

@@ -1,0 +1,12 @@
+[SQL and OUTPUT]
+
+mysql> SELECT C.year, SUM(AR.number_of_release) AS NumberOfRelease FROM CalendarDimension C, AlbumDimension A, ArtistDimension R, PublisherDimension P, AlbumReleaseFact AR WHERE C.calendar_key = AR.calendar_key AND A.album_key = AR.album_key AND R.artist_key = AR.artist_key AND P.publisher_key = AR.publisher_key AND R.number_of_members = 1 AND P.name = 'Jive' AND A.cover_image IS NOT NULL AND C.year BETWEEN 2001 AND 2015 GROUP BY C.year;
++------+-----------------+
+| year | NumberOfRelease |
++------+-----------------+
+| 2008 |               1 |
+| 2012 |               1 |
++------+-----------------+
+2 rows in set (0.00 sec)
+
+
